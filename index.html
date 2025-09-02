@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>축구 매니저 게임</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 팀 선택 화면 -->
+<div id="teamSelection" class="screen active">
+    <h1>팀 선택</h1>
+    
+    <!-- 1부리그 -->
+    <div class="league-section">
+        <h2 class="league-title">🏆 1부리그 - 최고의 명문 클럽들</h2>
+        <div class="teams-grid">
+            <div class="team-card" data-team="바르셀로나">
+                <h3>바르셀로나</h3>
+                <p>꿈과 열정이 살아 숨쉬는 카탈루냐의 자존심</p>
+                <div class="team-rating">★★★★★</div>
+            </div>
+            <div class="team-card" data-team="레알 마드리드">
+                <h3>레알 마드리드</h3>
+                <p>왕실의 위엄과 전통을 자랑하는 유럽 최고의 클럽</p>
+                <div class="team-rating">★★★★★</div>
+            </div>
+            <div class="team-card" data-team="맨체스터 시티">
+                <h3>맨체스터 시티</h3>
+                <p>홀란드를 앞세운 최강의 공격력, 티키타카의 완성형</p>
+                <div class="team-rating">★★★★★</div>
+            </div>
+            <div class="team-card" data-team="리버풀">
+                <h3>리버풀</h3>
+                <p>살라와 함께하는 영국 최고의 명문클럽, 게겐프레싱의 대가</p>
+                <div class="team-rating">★★★★★</div>
+            </div>
+            <div class="team-card" data-team="토트넘 홋스퍼">
+                <h3>토트넘 홋스퍼</h3>
+                <p>손흥민과 함께하는 북런던의 강호, 공격적인 축구로 유명한 팀</p>
+                <div class="team-rating">★★★★☆</div>
+            </div>
+            <div class="team-card" data-team="파리 생제르맹">
+                <h3>파리 생제르맹</h3>
+                <p>크바라츠헬리아와 이강인의 조합, 프랑스 수도의 자존심</p>
+                <div class="team-rating">★★★★★</div>
+            </div>
+            <div class="team-card" data-team="AC 밀란">
+                <h3>AC 밀란</h3>
+                <p>레앙과 함께하는 이탈리아의 명문, 로쏘네리의 부활</p>
+                <div class="team-rating">★★★★☆</div>
+            </div>
+            <div class="team-card" data-team="인터 밀란">
+                <h3>인터 밀란</h3>
+                <p>마르쿠스 튀람의 득점력, 네라주리의 강력한 공격진</p>
+                <div class="team-rating">★★★★☆</div>
+            </div>
+            <div class="team-card" data-team="아스널">
+                <h3>아스널</h3>
+                <p>사카와 외데고르의 젊은 에너지, 부활하는 런던의 거너스</p>
+                <div class="team-rating">★★★★☆</div>
+            </div>
+            <div class="team-card" data-team="나폴리">
+                <h3>나폴리</h3>
+                <p>스콧 맥토미니와 함께하는 남부 이탈리아의 열정</p>
+                <div class="team-rating">★★★★☆</div>
+            </div>
+            <div class="team-card" data-team="첼시">
+                <h3>첼시</h3>
+                <p>엔조와 젊은 재능들의 조화, 런던 블루스의 새로운 시대</p>
+                <div class="team-rating">★★★★☆</div>
+            </div>
+            <div class="team-card" data-team="바이에른 뮌헨">
+                <h3>바이에른 뮌헨</h3>
+                <p>득점 머신 해리 케인과 함께하는 독일 축구의 왕자</p>
+                <div class="team-rating">★★★★★</div>
+            </div>
+            <div class="team-card" data-team="아틀레티코 마드리드">
+                <h3>아틀레티코 마드리드</h3>
+                <p>그리즈만 알바레즈 듀오의 클래스, 빗장수비의 강력함</p>
+                <div class="team-rating">★★★★☆</div>
+            </div>
+            <div class="team-card" data-team="도르트문트">
+                <h3>도르트문트</h3>
+                <p>게겐프레싱의 완성형, 독일 축구의 젊은 피</p>
+                <div class="team-rating">★★★★☆</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2부리그 -->
+    <div class="league-section">
+        <h2 class="league-title">⚽ 2부리그 - 도전하는 강호들</h2>
+        <div class="teams-grid">
+            <div class="team-card" data-team="유벤투스">
+                <h3>유벤투스</h3>
+                <p>이탈리아의 전통 강호, 흑백 줄무늬의 자존심</p>
+                <div class="team-rating">★★★★☆</div>
+            </div>
+            <div class="team-card" data-team="뉴캐슬 유나이티드">
+                <h3>뉴캐슬 유나이티드</h3>
+                <p>이사크와 고든의 스피드, 영국 북동부의 야심찬 언더독</p>
+                <div class="team-rating">★★★☆☆</div>
+            </div>
+            <div class="team-card" data-team="아스톤 빌라">
+                <h3>아스톤 빌라</h3>
+                <p>버밍엄의 자존심, 전통과 혁신이 만나는 클럽</p>
+                <div class="team-rating">★★★☆☆</div>
+            </div>
+            <div class="team-card" data-team="라이프치히">
+                <h3>라이프치히</h3>
+                <p>독일의 떠오르는 신예, 젊은 에너지와 현대적 축구</p>
+                <div class="team-rating">★★★☆☆</div>
+            </div>
+            <div class="team-card" data-team="세비야">
+                <h3>세비야</h3>
+                <p>UEFA 컵의 왕자, 안달루시아의 뜨거운 열정</p>
+                <div class="team-rating">★★★☆☆</div>
+            </div>
+            <div class="team-card" data-team="아약스">
+                <h3>아약스</h3>
+                <p>토탈 풋볼의 발원지, 네덜란드 축구의 상징</p>
+                <div class="team-rating">★★★☆☆</div>
+            </div>
+            <div class="team-card" data-team="AS 로마">
+                <h3>AS 로마</h3>
+                <p>디발라의 마법같은 플레이, 이탈리아 수도의 늑대들</p>
+                <div class="team-rating">★★★☆☆</div>
+            </div>
+            <div class="team-card" data-team="레버쿠젠">
+                <h3>레버쿠젠</h3>
+                <p>비르츠와 함께하는 젊은 에너지, 독일의 떠오르는 강호</p>
+                <div class="team-rating">★★★☆☆</div>
+            </div>
+            <div class="team-card" data-team="스포르팅 CP">
+                <h3>스포르팅 CP</h3>
+                <p>포르투갈의 전통 강호, 리스본의 녹색 사자들</p>
+                <div class="team-rating">★★★☆☆</div>
+            </div>
+            <div class="team-card" data-team="벤피카">
+                <h3>벤피카</h3>
+                <p>독수리의 비상, 포르투갈 축구의 자존심</p>
+                <div class="team-rating">★★★☆☆</div>
+            </div>
+            <div class="team-card" data-team="셀틱">
+                <h3>셀틱</h3>
+                <p>스코틀랜드의 전설, 글래스고의 녹색 전사들</p>
+                <div class="team-rating">★★★☆☆</div>
+            </div>
+            <div class="team-card" data-team="페예노르트">
+                <h3>페예노르트</h3>
+                <p>로테르담의 자존심, 네덜란드의 전통 강호</p>
+                <div class="team-rating">★★★☆☆</div>
+            </div>
+            <div class="team-card" data-team="맨체스터 유나이티드">
+                <h3>맨체스터 유나이티드</h3>
+                <p>EPL 최다우승 팀, 전설적인 명문클럽의 재건</p>
+                <div class="team-rating">★★★☆☆</div>
+            </div>
+            <div class="team-card" data-team="올랭피크 드 마르세유">
+                <h3>올랭피크 드 마르세유</h3>
+                <p>프랑스 남부의 열정, 마르세유의 하얀 전사들</p>
+                <div class="team-rating">★★★☆☆</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3부리그 -->
+    <div class="league-section">
+        <h2 class="league-title">🌟 3부리그 - 꿈을 향한 도전자들</h2>
+        <div class="teams-grid">
+            <div class="team-card" data-team="FC 서울">
+                <h3>FC 서울</h3>
+                <p>대한민국 수도의 자존심, K리그의 명문 클럽</p>
+                <div class="team-rating">★★☆☆☆</div>
+            </div>
+            <div class="team-card" data-team="갈라타사라이">
+                <h3>갈라타사라이</h3>
+                <p>터키 이스탄불의 전설, 유럽을 놀라게 한 황금사자들</p>
+                <div class="team-rating">★★☆☆☆</div>
+            </div>
+            <div class="team-card" data-team="알 힐랄">
+                <h3>알 힐랄</h3>
+                <p>사우디아라비아의 왕자, 중동 축구의 강자</p>
+                <div class="team-rating">★★☆☆☆</div>
+            </div>
+            <div class="team-card" data-team="알 이티하드">
+                <h3>알 이티하드</h3>
+                <p>벤제마와 함께하는 사우디의 새로운 도전</p>
+                <div class="team-rating">★★☆☆☆</div>
+            </div>
+            <div class="team-card" data-team="알 나스르">
+                <h3>알 나스르</h3>
+                <p>호날두의 새로운 무대, 사우디 축구의 혁신</p>
+                <div class="team-rating">★★☆☆☆</div>
+            </div>
+            <div class="team-card" data-team="아르헨티나 연합">
+                <h3>아르헨티나 연합</h3>
+                <p>메시의 고향, 남미 축구의 예술혼이 살아있는 팀</p>
+                <div class="team-rating">★★☆☆☆</div>
+            </div>
+            <div class="team-card" data-team="미국 연합">
+                <h3>미국 연합</h3>
+                <p>북미 축구의 새로운 희망, 다양성이 만드는 힘</p>
+                <div class="team-rating">★★☆☆☆</div>
+            </div>
+            <div class="team-card" data-team="멕시코 연합">
+                <h3>멕시코 연합</h3>
+                <p>라틴 아메리카의 열정, 축제 같은 축구를 구사</p>
+                <div class="team-rating">★★☆☆☆</div>
+            </div>
+            <div class="team-card" data-team="브라질 연합">
+                <h3>브라질 연합</h3>
+                <p>삼바 축구의 본고장, 아름다운 플레이의 대가들</p>
+                <div class="team-rating">★★☆☆☆</div>
+            </div>
+            <div class="team-card" data-team="전북 현대">
+                <h3>전북 현대</h3>
+                <p>K리그의 전통 강호, 전라북도의 녹색 전사들</p>
+                <div class="team-rating">★★☆☆☆</div>
+            </div>
+            <div class="team-card" data-team="울산 현대">
+                <h3>울산 현대</h3>
+                <p>산업도시의 자존심, 아시아 챔피언의 경험</p>
+                <div class="team-rating">★★☆☆☆</div>
+            </div>
+            <div class="team-card" data-team="포항 스틸러스">
+                <h3>포항 스틸러스</h3>
+                <p>철강 도시의 단단함, K리그 초창기부터의 전통</p>
+                <div class="team-rating">★★☆☆☆</div>
+            </div>
+            <div class="team-card" data-team="광주 FC">
+                <h3>광주 FC</h3>
+                <p>새롭게 떠오르는 K리그의 다크호스</p>
+                <div class="team-rating">★★☆☆☆</div>
+            </div>
+            <div class="team-card" data-team="리옹">
+                <h3>리옹</h3>
+                <p>프랑스의 전통 강호, 아름다운 축구의 대명사</p>
+                <div class="team-rating">★★☆☆☆</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- 로비 화면 -->
+    <div id="lobby" class="screen">
+        <div class="lobby-header">
+            <h1 id="teamName">팀 이름</h1>
+            <div class="team-info">
+                <div class="info-item">
+                    <span class="label">자금:</span>
+                    <span id="teamMoney">1000억</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">사기:</span>
+                    <span id="teamMorale">50</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">스폰서:</span>
+                    <span id="currentSponsor">없음</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="lobby-tabs">
+    <button class="tab-btn active" data-tab="squad">스쿼드</button>
+    <button class="tab-btn" data-tab="match">경기</button>
+    <button class="tab-btn" data-tab="transfer">이적</button>
+    <button class="tab-btn" data-tab="league">리그</button>
+    <button class="tab-btn" data-tab="sponsor">스폰서</button>
+    <button class="tab-btn" data-tab="records">개인기록</button>  <!-- 이 줄 추가 -->
+    <button class="tab-btn" data-tab="settings">설정</button>
+</div>
+        <div class="tab-content">
+            <!-- 스쿼드 탭 -->
+            <div id="squad" class="tab-panel active">
+                <div class="formation-container">
+                    <div class="field">
+                        <div class="field-line"></div>
+                        <div class="center-circle"></div>
+                        <div class="penalty-box penalty-box-top"></div>
+                        <div class="penalty-box penalty-box-bottom"></div>
+                        
+                        <!-- 골키퍼 -->
+                        <div class="position gk" data-position="gk">
+                            <div class="player-slot" id="gk-slot">GK</div>
+                        </div>
+                        
+                        <!-- 수비수 -->
+                        <div class="position df df-1" data-position="df" data-index="0">
+                            <div class="player-slot">DF</div>
+                        </div>
+                        <div class="position df df-2" data-position="df" data-index="1">
+                            <div class="player-slot">DF</div>
+                        </div>
+                        <div class="position df df-3" data-position="df" data-index="2">
+                            <div class="player-slot">DF</div>
+                        </div>
+                        <div class="position df df-4" data-position="df" data-index="3">
+                            <div class="player-slot">DF</div>
+                        </div>
+                        
+                        <!-- 미드필더 -->
+                        <div class="position mf mf-1" data-position="mf" data-index="0">
+                            <div class="player-slot">MF</div>
+                        </div>
+                        <div class="position mf mf-2" data-position="mf" data-index="1">
+                            <div class="player-slot">MF</div>
+                        </div>
+                        <div class="position mf mf-3" data-position="mf" data-index="2">
+                            <div class="player-slot">MF</div>
+                        </div>
+                        
+                        <!-- 공격수 -->
+                        <div class="position fw fw-1" data-position="fw" data-index="0">
+                            <div class="player-slot">FW</div>
+                        </div>
+                        <div class="position fw fw-2" data-position="fw" data-index="1">
+                            <div class="player-slot">FW</div>
+                        </div>
+                        <div class="position fw fw-3" data-position="fw" data-index="2">
+                            <div class="player-slot">FW</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-players">
+                    <h3>팀 선수 목록</h3>
+                    <div id="playerList"></div>
+                </div>
+            </div>
+
+            <!-- 개선된 경기 탭 -->
+            <div id="match" class="tab-panel">
+                <div class="match-info">
+                    <h3>🏆 다음 경기(경기 중에는 경기종료버튼 누르지 마세요 누르면 겜터짐)</h3>
+                    <div class="opponent-info">
+                        <div class="opponent-details">
+                            <div class="opponent-name">
+                                <span id="opponentName">상대팀</span>
+                            </div>
+                            <div class="match-details">
+                                <span class="match-type">리그전</span>
+                                <span class="match-time">킥오프 예정</span>
+                            </div>
+                        </div>
+                        <button id="startMatchBtn" class="btn primary">⚽ 경기 시작</button>
+                    </div>
+                </div>
+                
+                <div class="tactic-selection">
+                    <h3>🎯 전술 선택</h3>
+                    <div class="tactic-info">
+                        <p>상대팀의 전술에 따라 승부의 향방이 결정될 수 있습니다.</p>
+                    </div>
+                    <select id="tacticSelect">
+                        <option value="gegenpress">게겐프레싱 - 높은 압박으로 빠른 역습</option>
+                        <option value="twoLine">두 줄 수비 - 견고한 수비 라인</option>
+                        <option value="lavolpiana">라볼피아나 - 측면 공격 중심</option>
+                        <option value="longBall">롱볼축구 - 긴 패스로 빠른 공격</option>
+                        <option value="possession">점유율 축구 - 천천히 기회 창출</option>
+                        <option value="parkBus">침대 축구 - 극도로 수비적</option>
+                        <option value="catenaccio">카테나치오 - 이탈리아식 수비</option>
+                        <option value="totalFootball">토탈 풋볼 - 모든 선수가 공수 참여</option>
+                        <option value="tikitaka">티키타카 - 짧은 패스 연결</option>
+                    </select>
+                    <div class="tactic-tip">
+                        💡 팁: 상대팀의 스타일을 파악하고 적절한 전술을 선택하세요!
+                    </div>
+                </div>
+            </div>
+
+            <!-- 이적 탭 -->
+            <div id="transfer" class="tab-panel">
+                <div class="transfer-controls">
+                    <h3>이적 시장</h3>
+                    <div class="search-filters">
+                        <input type="text" id="nameSearch" placeholder="선수 이름 검색">
+                        <select id="positionFilter">
+                            <option value="">모든 포지션</option>
+                            <option value="GK">골키퍼</option>
+                            <option value="DF">수비수</option>
+                            <option value="MF">미드필더</option>
+                            <option value="FW">공격수</option>
+                        </select>
+                        <input type="number" id="minRating" placeholder="최소 능력치">
+                        <input type="number" id="maxAge" placeholder="최대 나이">
+                        <button id="searchBtn" class="btn">검색</button>
+                    </div>
+                </div>
+                <div id="transferPlayers"></div>
+            </div>
+
+            <!-- 리그 탭 -->
+            <div id="league" class="tab-panel">
+                <h3>리그 순위표</h3>
+                <div id="leagueTable"></div>
+            </div>
+
+            <!-- 개선된 스폰서 탭 -->
+            <div id="sponsor" class="tab-panel">
+                <div class="sponsor-header">
+                    <h3>💼 스폰서 계약</h3>
+                    <p class="sponsor-description">
+                        스폰서와 계약하여 경기당 추가 수익을 얻으세요. 팀의 평균 능력치가 높을수록 더 좋은 스폰서와 계약할 수 있습니다.
+                    </p>
+                    <div class="current-sponsor-info">
+                        <div class="info-label">현재 스폰서:</div>
+                        <div class="current-sponsor-name" id="currentSponsorDisplay">계약 없음</div>
+                    </div>
+                </div>
+                <div id="sponsorList"></div>
+            </div>
+        
+          
+<!-- 개인 기록 탭 -->
+<div id="records" class="tab-panel">
+    <div class="records-header">
+        <h3>📊 개인 기록</h3>
+        <p class="records-description">시즌 득점왕과 도움왕 순위를 확인하세요!(개발중)</p>
+    </div>
+    
+    <div class="records-content">
+        <div class="records-section">
+            <h4>⚽ 득점왕 순위 (TOP 5)</h4>
+            <div id="topScorers" class="ranking-list">
+                <p style="text-align: center; opacity: 0.7;">아직 기록이 없습니다.</p>
+            </div>
+        </div>
+        
+        <div class="records-section">
+            <h4>🅰️ 도움왕 순위 (TOP 5)</h4>
+            <div id="topAssisters" class="ranking-list">
+                <p style="text-align: center; opacity: 0.7;">아직 기록이 없습니다.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+          
+            <!-- 설정 탭 -->
+            <div id="settings" class="tab-panel">
+                <h3>⚙️ 게임 설정</h3>
+                <div class="settings-content">
+                    <div class="settings-section">
+                        <h4>저장 및 불러오기</h4>
+                        <button id="saveGameBtn" class="btn">💾 게임 저장</button>
+                        <button id="loadGameBtn" class="btn">📁 게임 불러오기</button>
+                        <input type="file" id="loadGameInput" accept=".json" style="display: none;">
+                    </div>
+                    <div class="settings-section">
+                        <h4>선수 관리</h4>
+                        <button id="showGrowthBtn" class="btn">📈 성장 현황</button>
+                    </div>
+                    <div class="settings-section">
+                        <h4>전술 정보</h4>
+                        <button id="showTacticsBtn" class="btn">🎯 전술 상성표</button>
+                        <button id="showTeamTacticsBtn" class="btn">📋 팀별 전술</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+    <!-- 경기 화면 -->
+    <div id="matchScreen" class="screen">
+        <div class="match-header">
+            <h2 id="matchTitle">경기 진행</h2>
+            <div class="score">
+                <span id="homeTeam">홈팀</span>
+                <span id="scoreDisplay">0 - 0</span>
+                <span id="awayTeam">어웨이팀</span>
+            </div>
+            <div class="time">
+                <span id="matchTime">0분</span>
+            </div>
+        </div>
+        
+        <div class="match-events">
+            <div id="eventList"></div>
+        </div>
+        
+        <button id="endMatchBtn" class="btn" style="display: none;">경기 종료</button>
+    </div>
+
+    <!-- 인터뷰 화면 -->
+    <div id="interviewScreen" class="screen">
+        <div class="interview-container">
+            <h2>경기 후 인터뷰</h2>
+            <div id="interviewQuestion"></div>
+            <div class="interview-options">
+                <button class="interview-btn" data-option="1"></button>
+                <button class="interview-btn" data-option="2"></button>
+                <button class="interview-btn" data-option="3"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 선수 선택 모달 -->
+    <div id="playerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>선수 선택</h3>
+            <div id="modalPlayerList"></div>
+        </div>
+    </div>
+
+    <!-- 전술 정보 모달 -->
+    <div id="tacticsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeTacticsModal()">&times;</span>
+            <h3 id="tacticsModalTitle">전술 정보</h3>
+            <div id="tacticsModalContent"></div>
+        </div>
+    </div>
+
+<script src="records.js"></script>
+<script src="script.js"></script>
+<script src="playerGrowth.js"></script>
+<script src="tacticSystem.js"></script>
+<script src="transfer.js"></script>
+</body>
+</html>index
