@@ -971,81 +971,65 @@ function displayEvent(event, matchData) {
 
 function endMatch(matchData) {
     document.getElementById('endMatchBtn').style.display = 'block';
-    
+
     // 경기 결과 계산
     const userScore = matchData.homeScore;
     const opponentScore = matchData.awayScore;
     let result = '';
     let moraleChange = 0;
     let points = 0;
-    
+
     // 전력 차이에 따른 결과 반영
     const strengthDiff = matchData.strengthDiff;
-    const expectation = strengthDiff.userAdvantage ? '승리' : '패배';
-    const isUpset = (result === '승리' && !strengthDiff.userAdvantage) || 
-                   (result === '패배' && strengthDiff.userAdvantage);
-    
+    const isUpset = (userScore > opponentScore && !strengthDiff.userAdvantage) ||
+                     (userScore < opponentScore && strengthDiff.userAdvantage);
+
     if (userScore > opponentScore) {
         result = '승리';
         if (strengthDiff.userAdvantage) {
-            // 예상된 승리
             moraleChange = Math.floor(Math.random() * 8) + 5; // 5-12
         } else {
-            // 예상 밖 승리 (업셋)
             moraleChange = Math.floor(Math.random() * 15) + 10; // 10-24
         }
         points = 3;
         
-        // 기본 경기 수익
-        gameData.teamMoney += 50; // 승리 시 50억
-        
-        // 스폰서 보너스
+        gameData.teamMoney += 50;
         if (gameData.currentSponsor) {
             gameData.teamMoney += gameData.currentSponsor.payPerWin;
         }
     } else if (userScore < opponentScore) {
         result = '패배';
         if (!strengthDiff.userAdvantage) {
-            // 예상된 패배
             moraleChange = -(Math.floor(Math.random() * 8) + 3); // -3 to -10
         } else {
-            // 예상 밖 패배 (충격적 패배)
             moraleChange = -(Math.floor(Math.random() * 15) + 10); // -10 to -24
         }
         points = 0;
         
-        // 기본 경기 수익
-        gameData.teamMoney += 10; // 패배 시 10억
-        
-        // 스폰서 보너스
+        gameData.teamMoney += 10;
         if (gameData.currentSponsor) {
             gameData.teamMoney += gameData.currentSponsor.payPerLoss;
         }
     } else {
         result = '무승부';
         if (strengthDiff.strengthGap < 5) {
-            // 비슷한 전력 간 무승부
             moraleChange = Math.floor(Math.random() * 3) - 1; // -1 to 1
         } else if (strengthDiff.userAdvantage) {
-            // 강한 팀이 무승부 (실망)
             moraleChange = -(Math.floor(Math.random() * 5) + 2); // -2 to -6
         } else {
-            // 약한 팀이 무승부 (선전)
             moraleChange = Math.floor(Math.random() * 8) + 3; // 3-10
         }
         points = 1;
         
-        // 기본 경기 수익
-        gameData.teamMoney += 15; // 무승부 시 15억
-        
-        // 스폰서 보너스 (승리의 절반)
+        gameData.teamMoney += 15;
         if (gameData.currentSponsor) {
             gameData.teamMoney += Math.floor(gameData.currentSponsor.payPerWin / 2);
         }
     }
-    
-    // 리그 데이터 업데이트
-    updateLeagueData(matchData, points);
+
+    // 리그 데이터 업데이트 - 수정된 부분 👇
+    const userLeague = allTeams[gameData.selectedTeam].league;
+    updateLeagueData(userLeague, matchData, points);
     
     // 사기 업데이트
     gameData.teamMorale = Math.max(0, Math.min(100, gameData.teamMorale + moraleChange));
@@ -1089,7 +1073,7 @@ function endMatch(matchData) {
 
     // 개인기록 업데이트
     if (typeof updateRecordsAfterMatch === 'function') {
-    updateRecordsAfterMatch(matchData);
+        updateRecordsAfterMatch(matchData);
     }
     
     // AI 팀들 경기 시뮬레이션
