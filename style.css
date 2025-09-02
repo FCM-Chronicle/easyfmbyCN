@@ -1,0 +1,1537 @@
+/* 기본 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: white;
+    overflow-x: hidden;
+    transition: background 0.8s ease;
+}
+
+/* 화면 전환 */
+.screen {
+    display: none;
+    min-height: 100vh;
+    padding: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 유리 효과 */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* 팀별 유리 효과 조정 */
+body.team-realMadrid .glass,
+body.team-dortmund .glass {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* 팀 선택 화면 */
+#teamSelection h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.league-section {
+    margin-bottom: 50px;
+}
+
+.league-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.teams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.team-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.team-card p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.team-rating {
+    font-size: 1.2rem;
+    color: #ffd700;
+}
+
+/* 로비 화면 */
+.lobby-header {
+    text-align: center;
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.lobby-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.team-info {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-item .label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 5px;
+}
+
+.info-item span:last-child {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+/* 탭 시스템 */
+.lobby-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 버튼 호버 광택 효과 */
+.tab-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: rotate(45deg);
+    transition: all 0.6s;
+    opacity: 0;
+}
+
+.tab-btn:hover::before {
+    animation: shine 0.6s ease-in-out;
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+.tab-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.tab-btn.active {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+.tab-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tab-panel {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.tab-panel.active {
+    display: block;
+}
+
+/* 포메이션 필드 */
+.formation-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.field {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    background: linear-gradient(to bottom, #2ecc71, #27ae60);
+    border-radius: 10px;
+    border: 3px solid white;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* 경기장 지속적인 광택 애니메이션 */
+.field::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, 
+        transparent, 
+        transparent, 
+        rgba(255, 255, 255, 0.1), 
+        transparent, 
+        transparent
+    );
+    animation: fieldShine 4s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes fieldShine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+.field-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: white;
+    transform: translateY(-50%);
+}
+
+.center-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    border: 2px solid white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.penalty-box {
+    position: absolute;
+    left: 50%;
+    width: 200px;
+    height: 80px;
+    border: 2px solid white;
+    transform: translateX(-50%);
+}
+
+/* 패널티박스 180도 회전 - 위치만 교체 */
+.penalty-box-top {
+    top: 0;
+    border-top: none;
+}
+
+.penalty-box-bottom {
+    bottom: 0;
+    border-bottom: none;
+}
+
+/* 포지션 배치 - 정상 방향 */
+.position {
+    position: absolute;
+    z-index: 10;
+}
+
+.gk {
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* 수비수 - 왼쪽 선수들 아주 조금 왼쪽으로 */
+.df-1 { bottom: 120px; left: 50%; transform: translateX(-340px); } /* 중심에서 왼쪽으로 340px (320px → 340px) */
+.df-2 { bottom: 120px; left: 50%; transform: translateX(-150px); } /* 중심에서 왼쪽으로 150px (140px → 150px) */
+.df-3 { bottom: 120px; left: 50%; transform: translateX(60px); }   /* 중심에서 오른쪽으로 60px */
+.df-4 { bottom: 120px; left: 50%; transform: translateX(240px); }  /* 중심에서 오른쪽으로 240px */
+
+/* 미드필더 - 왼쪽 선수들 아주 조금 왼쪽으로 */
+.mf-1 { bottom: 250px; left: 50%; transform: translateX(-270px); } /* 중심에서 왼쪽으로 270px (250px → 270px) */
+.mf-2 { bottom: 250px; left: 50%; transform: translateX(-60px); }  /* 중심 (기준점) */
+.mf-3 { bottom: 250px; left: 50%; transform: translateX(160px); }  /* 중심에서 오른쪽으로 160px */
+
+/* 공격수 - 왼쪽 선수들 아주 조금 왼쪽으로 */
+.fw-1 { bottom: 380px; left: 50%; transform: translateX(-270px); } /* 중심에서 왼쪽으로 270px (250px → 270px) */
+.fw-2 { bottom: 380px; left: 50%; transform: translateX(-60px); }  /* 중심 */
+.fw-3 { bottom: 380px; left: 50%; transform: translateX(160px); }  /* 중심에서 오른쪽으로 160px */
+
+/* 개선된 플레이어 슬롯 - 크기 1.5배 증가 */
+.player-slot {
+    width: 120px; /* 80px * 1.5 */
+    height: 75px; /* 50px * 1.5 */
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    font-size: 1.05rem; /* 0.7rem * 1.5 */
+    font-weight: bold;
+    padding: 3px; /* 2px * 1.5 */
+}
+
+.player-slot:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.player-slot.filled {
+    background: rgba(46, 204, 113, 0.8);
+    color: white;
+    flex-direction: column;
+    font-size: 0.975rem; /* 0.65rem * 1.5 */
+    padding: 4.5px; /* 3px * 1.5 */
+    text-align: center;
+    line-height: 1.1;
+}
+
+.player-slot.filled div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+/* 선수 목록 */
+.team-players {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.team-players h3 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#playerList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.player-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    position: relative;
+}
+
+.player-card:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+}
+
+.player-card:not(.used):hover::after {
+    content: '우클릭: 방출';
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    font-size: 0.7rem;
+    color: #ffd700;
+    opacity: 0.8;
+}
+
+.player-card.used {
+    opacity: 0.5;
+    background: rgba(128, 128, 128, 0.2);
+    cursor: not-allowed;
+}
+
+.player-card.used:hover {
+    transform: none;
+    background: rgba(128, 128, 128, 0.2);
+}
+
+.player-card .name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.player-card .details {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* 버튼 스타일 - 광택 효과 추가 */
+.btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: rotate(45deg);
+    transition: all 0.6s;
+    opacity: 0;
+}
+
+.btn:hover::before {
+    animation: shine 0.6s ease-in-out;
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+.btn.primary {
+    background: rgba(46, 204, 113, 0.6);
+    border-color: rgba(46, 204, 113, 0.8);
+}
+
+.btn.primary:hover {
+    background: rgba(46, 204, 113, 0.8);
+}
+
+/* 경기 화면 */
+.match-header {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.score {
+    font-size: 2rem;
+    margin: 15px 0;
+    font-weight: bold;
+}
+
+.time {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.match-events {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    height: 400px;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 20px;
+}
+
+.event-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    animation: slideIn 0.5s ease-out;
+}
+
+/* 이벤트 타입별 색상 */
+.event-card.goal {
+    background: rgba(46, 204, 113, 0.3);
+    border-color: rgba(46, 204, 113, 0.5);
+}
+
+.event-card.foul {
+    background: rgba(231, 76, 60, 0.3);
+    border-color: rgba(231, 76, 60, 0.5);
+}
+
+.event-card.kickoff-ready {
+    background: rgba(52, 152, 219, 0.3);
+    border-color: rgba(52, 152, 219, 0.5);
+    text-align: center;
+}
+
+.event-card.kickoff {
+    background: rgba(46, 204, 113, 0.3);
+    border-color: rgba(46, 204, 113, 0.5);
+    font-weight: bold;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.event-time {
+    font-weight: bold;
+    color: #ffd700;
+    margin-bottom: 5px;
+}
+
+/* 인터뷰 화면 */
+.interview-container {
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.interview-container h2 {
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+#interviewQuestion {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.interview-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.interview-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.interview-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: rotate(45deg);
+    transition: all 0.6s;
+    opacity: 0;
+}
+
+.interview-btn:hover::before {
+    animation: shine 0.6s ease-in-out;
+}
+
+.interview-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(10px);
+}
+
+/* 개선된 경기 탭 인터페이스 */
+.match-info {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.match-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ffd700;
+}
+
+.opponent-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+#opponentName {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.tactic-selection {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.tactic-selection h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #ffd700;
+}
+
+#tacticSelect {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+    font-size: 1rem;
+}
+
+#tacticSelect option {
+    background: rgba(50, 50, 50, 0.9);
+    color: white;
+}
+
+/* 개선된 스폰서 인터페이스 */
+.sponsor-header {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.sponsor-header h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #ffd700;
+}
+
+.sponsor-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+.current-sponsor-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.info-label {
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.current-sponsor-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+#sponsorList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+}
+
+.sponsor-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.sponsor-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ffd700, #ffed4e);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sponsor-card:hover::before {
+    opacity: 1;
+}
+
+.sponsor-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+}
+
+.sponsor-card h4 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    color: #ffd700;
+}
+
+.sponsor-card p {
+    margin-bottom: 15px;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+.sponsor-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.sponsor-detail {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.sponsor-detail strong {
+    color: #ffd700;
+}
+
+.sponsor-requirements {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    border-left: 3px solid #ffd700;
+}
+
+.sponsor-card.available {
+    border-color: rgba(46, 204, 113, 0.5);
+}
+
+.sponsor-card.available::before {
+    background: linear-gradient(90deg, #2ecc71, #27ae60);
+}
+
+.sponsor-card.unavailable {
+    opacity: 0.6;
+    cursor: not-allowed;
+    border-color: rgba(231, 76, 60, 0.3);
+}
+
+.sponsor-card.unavailable::before {
+    background: linear-gradient(90deg, #e74c3c, #c0392b);
+}
+
+.sponsor-card.contracted {
+    background: rgba(46, 204, 113, 0.2);
+    border-color: rgba(46, 204, 113, 0.5);
+}
+
+/* 개선된 경기 탭 스타일 */
+.tactic-info {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.tactic-tip {
+    margin-top: 15px;
+    padding: 12px;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #ffd700;
+}
+
+.opponent-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.opponent-name {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.match-details {
+    display: flex;
+    gap: 15px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.match-type {
+    background: rgba(46, 204, 113, 0.2);
+    padding: 3px 8px;
+    border-radius: 5px;
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+.match-time {
+    background: rgba(52, 152, 219, 0.2);
+    padding: 3px 8px;
+    border-radius: 5px;
+    color: #3498db;
+}
+
+/* 설정 스타일 */
+.settings-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.settings-section {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.settings-section h4 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: #ffd700;
+    text-align: center;
+}
+
+.settings-section .btn {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.settings-section .btn:last-child {
+    margin-bottom: 0;
+}
+
+/* 이적 시장 */
+.transfer-controls {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.search-filters {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.search-filters input,
+.search-filters select {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+.search-filters select option {
+    background: rgba(50, 50, 50, 0.9);
+    color: black;
+}
+
+.search-filters input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#transferPlayers {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.transfer-player {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.transfer-player:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+}
+
+.transfer-player .player-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.transfer-player .player-position {
+    background: rgba(46, 204, 113, 0.6);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.transfer-price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffd700;
+    margin-top: 10px;
+}
+
+/* 리그 테이블 */
+#leagueTable {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow-x: auto;
+}
+
+.league-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.league-table th,
+.league-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.league-table th {
+    background: rgba(255, 255, 255, 0.1);
+    font-weight: bold;
+}
+
+.league-table tr:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.league-table .user-team {
+    background: rgba(46, 204, 113, 0.3) !important;
+}
+
+/* 모달 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #ff6b6b;
+}
+
+#modalPlayerList {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-top: 20px;
+}
+
+/* 모달 기본 스타일 */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 15px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.close-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+/* 포지션 헤더 */
+.position-header {
+    color: #FFD700;
+    margin: 25px 0 15px 0;
+    font-size: 18px;
+    font-weight: bold;
+    border-left: 4px solid #FFD700;
+    padding-left: 10px;
+}
+
+/* 선수 성장 카드 */
+.player-growth-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.player-growth-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.player-growth-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.player-basic-info h4 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    color: #FFD700;
+}
+
+.player-details {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.position-badge, .rating-badge, .age-badge, .stage-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+.position-badge.gk { background: #E74C3C; }
+.position-badge.df { background: #3498DB; }
+.position-badge.mf { background: #2ECC71; }
+.position-badge.fw { background: #F39C12; }
+
+.rating-badge {
+    background: linear-gradient(45deg, #FF6B6B, #FF8E53);
+}
+
+.age-badge {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.growth-summary {
+    text-align: right;
+}
+
+.growth-rate {
+    background: rgba(255, 215, 0, 0.2);
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #FFD700;
+}
+
+.growth-label {
+    display: block;
+    font-size: 12px;
+    color: #FFD700;
+    margin-bottom: 2px;
+}
+
+.growth-value {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+/* 선수 성장 통계 */
+.player-growth-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.stat-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.stat-value {
+    font-weight: bold;
+    color: #FFD700;
+}
+
+/* 성장 잠재력 바 */
+.growth-potential {
+    margin-top: 15px;
+}
+
+.potential-bar {
+    background: rgba(255, 255, 255, 0.2);
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.potential-fill {
+    background: linear-gradient(90deg, #4ECDC4, #44A08D);
+    height: 100%;
+    transition: width 0.5s ease;
+}
+
+.potential-text {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .teams-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .team-info {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .lobby-tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .field {
+        height: 400px;
+    }
+    
+    .player-slot {
+        width: 70px; /* 90px → 70px로 더 작게 */
+        height: 45px; /* 56px → 45px로 더 작게 */
+        font-size: 0.65rem; /* 0.8rem → 0.65rem로 더 작게 */
+    }
+    
+    .player-slot.filled {
+        font-size: 0.6rem; /* 0.75rem → 0.6rem로 더 작게 */
+    }
+    
+    /* 모바일에서 선수 포지션 조정 - 세로 간격도 줄임 */
+    .df-1 { bottom: 90px; left: 50%; transform: translateX(-140px); } /* 세로 간격 줄임 120px → 90px */
+    .df-2 { bottom: 90px; left: 50%; transform: translateX(-50px); }  
+    .df-3 { bottom: 90px; left: 50%; transform: translateX(15px); }   
+    .df-4 { bottom: 90px; left: 50%; transform: translateX(105px); }  
+
+    .mf-1 { bottom: 180px; left: 50%; transform: translateX(-120px); } /* 세로 간격 줄임 250px → 180px */
+    .mf-2 { bottom: 180px; left: 50%; transform: translateX(-45px); }  
+    .mf-3 { bottom: 180px; left: 50%; transform: translateX(75px); }   
+
+    .fw-1 { bottom: 270px; left: 50%; transform: translateX(-120px); } /* 세로 간격 줄임 380px → 270px */
+    .fw-2 { bottom: 270px; left: 50%; transform: translateX(-45px); }  
+    .fw-3 { bottom: 270px; left: 50%; transform: translateX(75px); }
+    
+    .search-filters {
+        flex-direction: column;
+    }
+    
+    .interview-options {
+        gap: 10px;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+        padding: 20px;
+    }
+    
+    .sponsor-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .opponent-info {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .player-growth-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .player-growth-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* 스크롤바 스타일 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* 로딩 애니메이션 */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+.records-header {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.records-header h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #ffd700;
+}
+
+.records-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.records-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.records-section {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.records-section h4 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: #ffd700;
+    text-align: center;
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+    padding-bottom: 10px;
+}
+
+.ranking-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ranking-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ranking-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.ranking-item.user-player {
+    background: rgba(46, 204, 113, 0.3);
+    border-color: rgba(46, 204, 113, 0.5);
+}
+
+.player-rank {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #ffd700;
+    min-width: 30px;
+}
+
+.player-info {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.player-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.player-team {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    color: #ffd700;
+}
+
+.player-stats {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .records-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .ranking-item {
+        padding: 12px;
+    }
+    
+    .player-rank {
+        font-size: 1.2rem;
+        min-width: 25px;
+    }
+    
+    .player-name {
+        font-size: 1rem;
+    }
+    
+    .player-stats {
+        font-size: 1.1rem;
+    }
+}
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
