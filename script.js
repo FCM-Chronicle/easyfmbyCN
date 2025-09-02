@@ -227,7 +227,7 @@ const allTeams = {
         league: 1,
         players: [
             { name: "피에트로 테라치아노", position: "GK", country: "이탈리아", age: 21, rating: 67 },
-            { name: "사무엘레 리치", position: "FW", country: "이탈리아", age: 22, rating: 80 },
+            { name: "사무엘레 리치", position: "MF", country: "이탈리아", age: 22, rating: 83 },
             { name: "산티아고 히메네스", position: "FW", country: "멕시코", age: 24, rating: 83 },
             { name: "루벤 로프터스치크", position: "MF", country: "잉글랜드", age: 29, rating: 81 },
             { name: "하파엘 레앙", position: "FW", country: "포르투갈", age: 26, rating: 89 },
@@ -238,12 +238,12 @@ const allTeams = {
             { name: "사무엘 추쿠에제", position: "FW", country: "나이지리아", age: 26, rating: 76 },
             { name: "에메르송 로얄", position: "DF", country: "브라질", age: 26, rating: 72 },
             { name: "피카요 토모리", position: "DF", country: "잉글랜드", age: 27, rating: 85 },
-            { name: "말릭 티아우", position: "DF", country: "독일", age: 23, rating: 78 },
+            { name: "말릭 티아우", position: "DF", country: "독일", age: 23, rating: 83 },
             { name: "유수프 포파나", position: "MF", country: "프랑스", age: 26, rating: 82 },
             { name: "스트라히냐 파블로비치", position: "DF", country: "세르비아", age: 24, rating: 77 },
             { name: "워렌 본도", position: "MF", country: "프랑스", age: 23, rating: 67 },
             { name: "필리포 테라치아노", position: "DF", country: "이탈리아", age: 22, rating: 67 },
-            { name: "마테오 가비아", position: "DF", country: "이탈리아", age: 25, rating: 80 },
+            { name: "마테오 가비아", position: "DF", country: "이탈리아", age: 25, rating: 85 },
             { name: "유누스 무사", position: "MF", country: "미국", age: 22, rating: 77 }
         ],
         description: "로소네리의 전통과 명예를 이어가는 밀라노의 자존심"
@@ -255,7 +255,7 @@ const allTeams = {
             { name: "얀 조머", position: "GK", country: "스위스", age: 36, rating: 83 },
             { name: "덴젤 둠프리스", position: "DF", country: "네덜란드", age: 29, rating: 87 },
             { name: "스테판 더프레이", position: "DF", country: "네덜란드", age: 33, rating: 74 },
-            { name: "피오트르 지엘린스키", position: "MF", country: "폴란드", age: 31, rating: 81 },
+            { name: "피오트르 지엘린스키", position: "MF", country: "폴란드", age: 31, rating: 84 },
             { name: "페타르 수치치", position: "MF", country: "크로아티아", age: 22, rating: 72 },
             { name: "마르쿠스 튀랑", position: "FW", country: "프랑스", age: 27, rating: 87 },
             { name: "라우타로 마르티네스", position: "FW", country: "아르헨티나", age: 27, rating: 90 },
@@ -275,7 +275,7 @@ const allTeams = {
             { name: "마테오 다르미안", position: "DF", country: "이탈리아", age: 35, rating: 71 },
             { name: "니콜라 잘레프스키", position: "DF", country: "폴란드", age: 23, rating: 74 },
             { name: "알레산드로 바스토니", position: "DF", country: "이탈리아", age: 26, rating: 90 },
-            { name: "메흐디 타레미", position: "FW", country: "이란", age: 33, rating: 69 }
+            { name: "메흐디 타레미", position: "FW", country: "이란", age: 33, rating: 71 }
         ],
         description: "네라추리의 위대한 전통을 이어가는 밀라노의 또 다른 자존심"
     },
